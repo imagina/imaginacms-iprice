@@ -1,0 +1,14 @@
+{
+    "name": "Iprice",
+    "alias": "iprice",
+    "version": "1.0.0",
+	"description": "",
+    "keywords": [],
+    "priority": 1,
+    "providers": [
+        "Modules\\Iprice\\Providers\\IpriceServiceProvider",
+        "Modules\\Iprice\\Providers\\EventServiceProvider",
+        "Modules\\Iprice\\Providers\\RouteServiceProvider"
+    ],
+    "files": []
+}
