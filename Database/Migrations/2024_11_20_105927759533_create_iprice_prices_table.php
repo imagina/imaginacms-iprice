@@ -17,7 +17,7 @@ return new class extends Migration {
       $table->double('price', 30, 2)->default(0);
       $table->string('entity_type')->nullable();
       $table->integer('entity_id')->nullable();
-      $table->string('entity_type')->nullable();
+      $table->string('zone')->nullable();
 
       // Audit fields
       $table->timestamps();

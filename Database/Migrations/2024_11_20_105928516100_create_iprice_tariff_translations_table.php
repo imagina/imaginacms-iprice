@@ -15,7 +15,7 @@ class CreateIpriceTariffTranslationsTable extends Migration
     Schema::create('iprice__tariff_translations', function (Blueprint $table) {
       $table->engine = 'InnoDB';
       $table->increments('id');
-      $table->string('title ')->nullable();
+      $table->string('title')->nullable();
 
       $table->integer('tariff_id')->unsigned();
       $table->string('locale')->index();
