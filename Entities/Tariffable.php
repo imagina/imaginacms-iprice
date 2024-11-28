@@ -9,12 +9,12 @@ class Tariffable extends CrudModel
 {
   use Translatable;
 
-  protected $table = 'iprice__listables';
-  public $transformer = 'Modules\Iprice\Transformers\ListableTransformer';
-  public $repository = 'Modules\Iprice\Repositories\ListableRepository';
+  protected $table = 'iprice__tariffables';
+  public $transformer = 'Modules\Iprice\Transformers\TariffableTransformer';
+  public $repository = 'Modules\Iprice\Repositories\TariffableRepository';
   public $requestValidation = [
-    'create' => 'Modules\Iprice\Http\Requests\CreateListableRequest',
-    'update' => 'Modules\Iprice\Http\Requests\UpdateListableRequest',
+    'create' => 'Modules\Iprice\Http\Requests\CreateTariffableRequest',
+    'update' => 'Modules\Iprice\Http\Requests\UpdateTariffableRequest',
   ];
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [

@@ -11,7 +11,7 @@ return new class extends Migration {
    */
   public function up()
   {
-    Schema::create('iprice__listables', function (Blueprint $table) {
+    Schema::create('iprice__tariffables', function (Blueprint $table) {
       $table->engine = 'InnoDB';
       $table->increments('id');
       $table->string('entity_type')->nullable();
