@@ -34,4 +34,19 @@ class Tariffable extends CrudModel
     'value',
     'price_id'
   ];
+
+  public function price()
+  {
+    return $this->belongsTo(Price::class, 'id', 'price_id');
+  }
+
+  public function tariff()
+  {
+    return $this->belongsTo(Tariff::class, 'id', 'tariff_id');
+  }
+
+  public function entity()
+  {
+    return $this->belongsTo($this->entity_type, 'entity_id');
+  }
 }
