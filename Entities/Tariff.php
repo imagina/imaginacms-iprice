@@ -31,6 +31,7 @@ class Tariff extends CrudModel
   ];
   protected $fillable = [
     'status',
+    'system_name',
     'type_id',
     'operation_id',
     'value',

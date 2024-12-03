@@ -8,7 +8,10 @@ class CreateTariffRequest extends BaseFormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+          'system_name' => 'required|min:2',
+          'type_id' => 'required'
+        ];
     }
 
     public function translationRules()

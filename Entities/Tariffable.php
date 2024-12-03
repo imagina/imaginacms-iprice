@@ -30,7 +30,7 @@ class Tariffable extends CrudModel
   protected $fillable = [
     'entity_type',
     'entity_id',
-    'list_id',
+    'tariff_id',
     'value',
     'price_id'
   ];
