@@ -27,6 +27,7 @@ return [
   ],
   'types' => [
     'percentage' => 'Percentage',
-    'fixedvalue' => 'Fixed value'
+    'fixedvalue' => 'Fixed value',
+    'replace' => 'Replace value',
   ]
 ];
