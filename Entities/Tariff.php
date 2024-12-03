@@ -31,12 +31,24 @@ class Tariff extends CrudModel
   ];
   protected $fillable = [
     'status',
-    'type',
-    'operation',
+    'type_id',
+    'operation_id',
     'value',
     'departments',
     'start_date',
     'end_date',
     'priority'
   ];
+
+  public function getTypeAttribute()
+  {
+    $type = new Type();
+    return $type->show($this->type_id);
+  }
+
+  public function getOperationAttribute()
+  {
+    $operation = new Operation();
+    return $operation->show($this->operation_id);
+  }
 }

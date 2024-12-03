@@ -15,8 +15,8 @@ return new class extends Migration {
       $table->engine = 'InnoDB';
       $table->increments('id');
       $table->integer('status')->default(1);
-      $table->string('type')->nullable();
-      $table->integer('operation')->nullable();
+      $table->integer('type_id')->unsigned();
+      $table->integer('operation_id')->unsigned()->nullable();
       $table->integer('value')->nullable();
       $table->text('departments')->nullable();
       $table->date('start_date')->nullable();
