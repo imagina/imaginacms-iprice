@@ -27,5 +27,5 @@ class Zone extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ['title','description'];
-  protected $fillable = ['system_name', 'status'];
+  protected $fillable = ['system_name', 'default', 'status'];
 }

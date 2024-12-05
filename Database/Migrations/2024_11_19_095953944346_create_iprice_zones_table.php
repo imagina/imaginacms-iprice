@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             // Your fields...
             $table->string('system_name')->unique();
+            $table->boolean('default')->default(0);
             $table->integer('status')->default(1);
             // Audit fields
             $table->timestamps();
