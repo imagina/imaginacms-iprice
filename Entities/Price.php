@@ -25,7 +25,7 @@ class Price extends CrudModel
   ];
   public $translatedAttributes = [];
   protected $fillable = [
-    'price',
+    'value',
     'entity_type',
     'entity_id',
     'zone_id'
@@ -33,6 +33,6 @@ class Price extends CrudModel
 
   public function zone()
   {
-    return $this->belongsTo(Zone::class, 'id', 'zone_id');
+    return $this->belongsTo(Zone::class);
   }
 }

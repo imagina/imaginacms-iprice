@@ -14,7 +14,7 @@ return new class extends Migration {
     Schema::create('iprice__prices', function (Blueprint $table) {
       $table->engine = 'InnoDB';
       $table->increments('id');
-      $table->double('price', 30, 2)->default(0);
+      $table->double('value', 30, 2)->default(0);
       $table->string('entity_type')->nullable();
       $table->integer('entity_id')->nullable();
       $table->integer('zone_id')->unsigned();
