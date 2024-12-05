@@ -97,7 +97,20 @@ class IpriceServiceProvider extends ServiceProvider
                 return new \Modules\Iprice\Repositories\Cache\CacheTariffableDecorator($repository);
             }
         );
+        $this->app->bind(
+            'Modules\Iprice\Repositories\ZoneRepository',
+            function () {
+                $repository = new \Modules\Iprice\Repositories\Eloquent\EloquentZoneRepository(new \Modules\Iprice\Entities\Zone());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Iprice\Repositories\Cache\CacheZoneDecorator($repository);
+            }
+        );
 // add bindings
+
 
 
 

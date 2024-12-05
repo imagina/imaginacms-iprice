@@ -25,7 +25,16 @@ return [
         'destroy' => 'iprice::tariffables.destroy resource',
         'restore' => 'iprice::tariffables.restore resource',
     ],
+    'iprice.zones' => [
+        'manage' => 'iprice::zones.manage resource',
+        'index' => 'iprice::zones.list resource',
+        'create' => 'iprice::zones.create resource',
+        'edit' => 'iprice::zones.edit resource',
+        'destroy' => 'iprice::zones.destroy resource',
+        'restore' => 'iprice::zones.restore resource',
+    ],
 // append
+
 
 
 

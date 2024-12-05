@@ -2,13 +2,10 @@
 
 namespace Modules\Iprice\Entities;
 
-use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 
 class Price extends CrudModel
 {
-  use Translatable;
-
   protected $table = 'iprice__prices';
   public $transformer = 'Modules\Iprice\Transformers\PriceTransformer';
   public $repository = 'Modules\Iprice\Repositories\PriceRepository';
@@ -31,6 +28,11 @@ class Price extends CrudModel
     'price',
     'entity_type',
     'entity_id',
-    'zone'
+    'zone_id'
   ];
+
+  public function zone()
+  {
+    return $this->belongsTo(Zone::class, 'id', 'zone_id');
+  }
 }

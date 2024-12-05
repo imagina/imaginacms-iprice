@@ -17,8 +17,10 @@ return new class extends Migration {
       $table->double('price', 30, 2)->default(0);
       $table->string('entity_type')->nullable();
       $table->integer('entity_id')->nullable();
-      $table->string('zone')->nullable();
+      $table->integer('zone_id')->unsigned();
+      $table->foreign('zone_id')->references('id')->on('iprice__zones')->onDelete('cascade');
 
+      $table->unique(['entity_type', 'entity_id', 'zone_id'], 'unique_entity_type_id_zone');
       // Audit fields
       $table->timestamps();
       $table->auditStamps();
