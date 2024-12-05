@@ -16,7 +16,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             // Your fields...
-            $table->string('system_name');
+            $table->string('system_name')->unique();
             $table->integer('status')->default(1);
             // Audit fields
             $table->timestamps();
