@@ -8,7 +8,8 @@ class HasPrices
   {
     return [
       'relations' => ['prices'],
-      'methods' => ['getPriceAttribute', 'getDefaultZone'],
+      'methods' => ['getDefaultZone'],
+      'getAttributes' => ['getPriceAttribute'],
       'events' => [
         'createdWithBindings' => 'syncPrices',
         'updatedWithBindings' => 'syncPrices',
@@ -40,13 +41,13 @@ class HasPrices
         $zoneId = $price['zone_id'] ?? null;
         $zoneSystemName = $price['zone_system_name'] ?? null;
 
-        if(!isset($zoneId) && isset($zoneSystemName)) {
+        if (!isset($zoneId) && isset($zoneSystemName)) {
           $zoneRepository = app('Modules\Iprice\Repositories\ZoneRepository');
           $zone = $zoneRepository->getItem($zoneSystemName, json_decode(json_encode(['filter' => ['field' => 'system_name']])));
           $zoneId = $zone->id ?? null;
         }
         $iprice = null;
-        if($zoneId) {
+        if ($zoneId) {
           //update or create the price
           $iprice = $priceRepository->updateOrCreate([
             'entity_type' => get_class($model),
@@ -55,7 +56,7 @@ class HasPrices
           ], ['value' => $price['value']]);
         }
 
-        if(!isset($iprice)) return;
+        if (!isset($iprice)) return;
         //Sync the price tariffs
         foreach (($price['tariffs'] ?? []) as $tariff) {
           if (isset($tariff['id']) || isset($tariff['system_name'])) {
@@ -80,12 +81,12 @@ class HasPrices
           }
         }
       }
-    } else if(isset($price)) {
+    } else if (isset($price)) {
       $defaultZone = $model->getDefaultZone();
       $zoneId = $defaultZone->id ?? null;
 
       //Ignore if not exist default zone
-      if($zoneId) {
+      if ($zoneId) {
         //update or create the price
         $priceRepository->updateOrCreate([
           'entity_type' => get_class($model),
@@ -114,16 +115,16 @@ class HasPrices
     return $zoneRepository->getItem(1, json_decode(json_encode(['filter' => ['field' => 'default']])));
   }
 
-  public function getPriceAttribute()
+  public function getPriceAttribute($model)
   {
-    $modelRelations = array_keys($this->getRelations());
+    $modelRelations = array_keys($model->getRelations());
     $price = 0;
     //Get price by default zone
     if (in_array('prices', $modelRelations)) {
-      $defaultZone = $this->getDefaultZone();
+      $defaultZone = $model->getDefaultZone();
       if ($defaultZone) {
-        $defaultPrice = $this->prices->where('zone_id', $defaultZone->id)->first();
-        $price = $defaultPrice->price ?? 0;
+        $defaultPrice = $model->prices->where('zone_id', $defaultZone->id)->first();
+        $price = $defaultPrice->value ?? 0;
       }
     }
     //Response
