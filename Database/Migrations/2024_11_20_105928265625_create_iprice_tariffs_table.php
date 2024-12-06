@@ -17,8 +17,8 @@ return new class extends Migration {
       $table->integer('status')->default(1);
       $table->string('system_name')->unique();
       $table->integer('type_id')->unsigned();
-      $table->integer('operation_id')->unsigned()->nullable();
-      $table->integer('value')->nullable();
+      $table->integer('operation_id')->unsigned();
+      $table->double('value', 30, 2)->default(0);
       $table->text('departments')->nullable();
       $table->date('start_date')->nullable();
       $table->date('end_date')->nullable();

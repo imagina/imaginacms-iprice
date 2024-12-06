@@ -10,7 +10,8 @@ class CreateTariffRequest extends BaseFormRequest
     {
         return [
           'system_name' => 'required|min:2',
-          'type_id' => 'required'
+          'type_id' => 'required',
+          'operation_id' => 'required'
         ];
     }
 

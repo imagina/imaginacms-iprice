@@ -63,6 +63,18 @@ $router->group(['prefix' =>'/iprice/v1'], function (Router $router) {
       //  ]
       // ]
     ]);
+  $router->apiCrud([
+    'module' => 'iprice',
+    'prefix' => 'operations',
+    'staticEntity' => 'Modules\Iprice\Entities\Operation',
+    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+  ]);
+  $router->apiCrud([
+    'module' => 'iprice',
+    'prefix' => 'types',
+    'staticEntity' => 'Modules\Iprice\Entities\Type',
+    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+  ]);
 // append
 
 
