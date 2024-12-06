@@ -3,6 +3,7 @@
 namespace Modules\Iprice\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Isite\Jobs\ProcessSeeds;
 
 class IpriceDatabaseSeeder extends Seeder
 {
@@ -11,6 +12,12 @@ class IpriceDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+      Model::unguard();
+      ProcessSeeds::dispatch([
+        "baseClass" => "\Modules\Iprice\Database\Seeders",
+        "seeds" => [
+          "CreatePrincipalZoneSeeder"
+        ]
+      ]);
     }
 }
